@@ -500,8 +500,7 @@ public class ImageLoader {
      * @param scaleType The scaleType of the imageView.
      */
     private static String getCacheKey(String url, int maxWidth, int maxHeight, ScaleType scaleType) {
-        return new StringBuilder(url.length() + 12).append("#W").append(maxWidth)
-                .append("#H").append(maxHeight).append("#S").append(scaleType.ordinal()).append(url)
-                .toString();
+        return String.valueOf(
+                ("#W" + maxWidth + "#H" + maxHeight + "#S" + scaleType.ordinal() + url).hashCode());
     }
 }
